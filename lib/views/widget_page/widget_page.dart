@@ -11,10 +11,6 @@ import 'package:flutter_go/routers/application.dart';
 
 
 class WidgetPage extends StatefulWidget {
-
-
-
-
   @override
   SecondPageState createState() => new SecondPageState();
 }
@@ -27,8 +23,6 @@ class SecondPageState extends State<WidgetPage> with AutomaticKeepAliveClientMix
   String active = 'test';
   String data = '无';
 
-
-
   @override
     bool get wantKeepAlive => true;
 
@@ -37,14 +31,13 @@ class SecondPageState extends State<WidgetPage> with AutomaticKeepAliveClientMix
     super.initState();
   }
 
-
-
   Widget buildGrid() {
     // 存放最后的widget
     List<Widget> tiles = [];
     Application.widgetTree.children.forEach((dynamic item) {
       tiles.add(new CateCard(category: item));
     });
+    print('ZJ:tiles');
     return new ListView(
       children: tiles,
     );

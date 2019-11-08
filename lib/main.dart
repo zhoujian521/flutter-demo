@@ -189,7 +189,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       home: new Scaffold(body: showWelcomePage()),
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       onGenerateRoute: Application.router.generator,
       navigatorObservers: <NavigatorObserver>[Analytics.observer],
     );
@@ -217,4 +217,3 @@ void main() async {
   db = Provider.db;
   runApp(new MyApp());
 }
-

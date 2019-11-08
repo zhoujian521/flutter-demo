@@ -8,9 +8,9 @@
 abstract class SuggestionEvent {}
 
 class SuggestionFetch extends SuggestionEvent {
-  final String query;
-
   SuggestionFetch({this.query});
+  
+  final String query;
 
   @override
   String toString() => 'SuggestionFetch:获取关键字提示事件';

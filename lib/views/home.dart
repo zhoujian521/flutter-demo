@@ -6,26 +6,29 @@
 /// target:  app首页
 
 import 'package:flutter/material.dart';
+
 /// import 'package:flutter/rendering.dart';
 import 'package:flutter_go/utils/data_utils.dart';
 import 'package:flutter_go/utils/shared_preferences.dart';
+
 /// import 'package:flutter_go/views/first_page/first_page.dart';
 import 'package:flutter_go/views/first_page/main_page.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter_go/views/user_page/user_page.dart';
 import 'package:flutter_go/views/widget_page/widget_page.dart';
 import 'package:flutter_go/views/welcome_page/fourth_page.dart';
+
 /// import 'package:flutter_go/views/collection_page/collection_page.dart';
 import 'package:flutter_go/routers/application.dart';
+
 /// import 'package:flutter_go/utils/provider.dart';
 import 'package:flutter_go/model/widget.dart';
+
 /// import 'package:flutter_go/widgets/index.dart';
 import 'package:flutter_go/components/search_input.dart';
 import 'package:flutter_go/model/search_history.dart';
 import 'package:flutter_go/resources/widget_name_to_icon.dart';
 import 'package:flutter_go/model/user_info.dart';
-
-
 
 class AppPage extends StatefulWidget {
   final UserInformation userInfo;
@@ -62,11 +65,12 @@ class _MyHomePageState extends State<AppPage>
     print('widget.userInfo    ${widget.userInfo}');
     initSearchHistory();
 
-    if(Application.pageIsOpen == true){// 是否展开业界动态
+    if (Application.pageIsOpen == true) {
+      // 是否展开业界动态
       tabData.insert(0, {'text': '业界动态', 'icon': Icon(Icons.language)});
       _list
-      //..add(FirstPage())
-        ..add(MainPage(userInfo: widget.userInfo));
+        //..add(FirstPage())
+        ..add(MainPage(userInfo: widget.userInfo));   
     }
     appBarTitle = tabData[0]['text'];
 
@@ -78,15 +82,10 @@ class _MyHomePageState extends State<AppPage>
         ),
       ));
     }
-      _list
-        ..add(WidgetPage())
-        ..add(FourthPage())
-        ..add(UserPage(userInfo: widget.userInfo));
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
+    _list
+      ..add(WidgetPage())
+      ..add(FourthPage())
+      ..add(UserPage(userInfo: widget.userInfo));
   }
 
   initSearchHistory() async {
@@ -99,8 +98,8 @@ class _MyHomePageState extends State<AppPage>
   void onWidgetTap(WidgetPoint widgetPoint, BuildContext context) {
     String targetName = widgetPoint.name;
     String targetRouter = widgetPoint.routerName;
-    searchHistoryList.add(
-        SearchHistory(name: targetName, targetRouter: targetRouter));
+    searchHistoryList
+        .add(SearchHistory(name: targetName, targetRouter: targetRouter));
     print("searchHistoryList1 ${searchHistoryList.toString()}");
     Application.router.navigateTo(context, targetRouter.toLowerCase(),
         transition: TransitionType.inFromRight);
@@ -129,11 +128,20 @@ class _MyHomePageState extends State<AppPage>
   }
 
   renderAppBar(BuildContext context, Widget widget, int index) {
+    print(index);
+    print(Application.pageIsOpen);
     if (index == 1 && Application.pageIsOpen == true) {
       return AppBar(title: buildSearchInput(context));
-    }else if(index == 0 && Application.pageIsOpen == false){
+    } else if (index == 0 && Application.pageIsOpen == false) {
       return AppBar(title: buildSearchInput(context));
     }
+  }
+
+  void _itemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+      appBarTitle = tabData[index]['text'];
+    });
   }
 
   @override
@@ -159,10 +167,8 @@ class _MyHomePageState extends State<AppPage>
     );
   }
 
-  void _itemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-      appBarTitle = tabData[index]['text'];
-    });
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
