@@ -14,7 +14,6 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
-    print(widget.userInfo);
     return Scaffold(
       body: Container(
         child: DrawerPage(

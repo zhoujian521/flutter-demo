@@ -47,7 +47,7 @@ class SearchPage extends StatelessWidget {
         preferredSize: Size(double.infinity, 52), //  is the height
         child: AppBar(title: searchBarPage)
       ),
-      //body: ProgressView(),
+      // body: ProgressView(),
       body: _industryPage,
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.search),

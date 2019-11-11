@@ -162,6 +162,7 @@ class _DrawerPageState extends State<DrawerPage> {
             pushPage(context, SearchPage(), pageName: "SearchPage");
           },
         ),
+        new Divider(),
         ListTile(
           leading: Icon(
             Icons.favorite,
@@ -213,6 +214,7 @@ class _DrawerPageState extends State<DrawerPage> {
             }
           },
         ),
+        new Divider(),
         ListTile(
           leading: Icon(
             Icons.share,

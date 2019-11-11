@@ -40,7 +40,7 @@ class FourthPageState extends State<FourthPage> with TickerProviderStateMixin {
               nextPageIndex = activeIndex;
             }
           } else if (event.updateType == UpdateType.doneDragging) {
-            if (slidePercent > 0.5) {
+            if (slidePercent > 0.3) {
               animatedPageDragger = new AnimatedPageDragger(
                 slideDirection: slideDirection,
                 transitionGoal: TransitionGoal.open,
